@@ -1,5 +1,6 @@
 body {
     font-family: Arial, sans-serif;
+    width:auto;
     margin: 0;
     padding: 0;
     background-color: #f0f8ff;
@@ -7,7 +8,7 @@ body {
 }
 
 header {
-    background-color: #4682b4;
+    background-color: #2d6ca0;
     color: white;
     padding: 20px;
     text-align: center;
@@ -18,13 +19,48 @@ main {
     text-align: center;
 }
 
-.button {
+.button-SYX {
     display: inline-block;
-    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #4894f8;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button-SYH {
+    display: inline-block;
     padding: 10px 20px;
     font-size: 16px;
     color: white;
     background-color: #5cb85c;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button-ZLY {
+    display: inline-block;
+    padding: 10px 12px;
+    font-size: 16px;
+    color: white;
+    background-color: #5f1fd6;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button-XH {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #ebe835;
     border: none;
     border-radius: 5px;
     text-decoration: none;
@@ -36,9 +72,9 @@ main {
 }
 
 footer {
-    margin-top: 20px;
+    margin-top: 260px;
     text-align: center;
-    background-color: #4682b4;
+    background-color: #2d6ca0;
     color: white;
     padding: 10px;
 }
