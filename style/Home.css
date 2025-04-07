@@ -5,15 +5,32 @@ body {
     padding: 0;
     background-color: #f0f8ff;
     color: #333;
+    box-sizing: border-box; /* 搜索按钮 */
 }
 
 header {
     background-color: #2d6ca0;
     color: white;
-    padding: 20px;
+    padding: 60px;
     text-align: center;
+    position: relative; /* 保持头部背景正常布局 */
 }
 
+header h1 {
+    position: absolute; /* 使文字完全固定 */
+    top: 50%; /* 距离父元素顶部50% */
+    left: 50%; /* 距离父元素左侧50% */
+    transform: translate(-50%, -50%); /* 居中对齐 */
+    margin: 0; /* 清除默认外边距 */
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
 main {
     padding: 20px;
     text-align: center;
@@ -29,6 +46,8 @@ main {
     border-radius: 5px;
     text-decoration: none;
     cursor: pointer;
+    margin-top: 15px;
+    margin-left: 100px;
 }
 
 .button-SYH {
@@ -41,6 +60,7 @@ main {
     border-radius: 5px;
     text-decoration: none;
     cursor: pointer;
+    margin-left: 30px;
 }
 
 .button-ZLY {
@@ -53,6 +73,7 @@ main {
     border-radius: 5px;
     text-decoration: none;
     cursor: pointer;
+    margin-left: -40px;
 }
 
 .button-XH {
@@ -65,11 +86,46 @@ main {
     border-radius: 5px;
     text-decoration: none;
     cursor: pointer;
+    margin-left: -110px;
+}
+.button-SYX:hover {
+    -webkit-text-size-adjust: 100%;
+    background-color: #286ac0;
+}
+.button-SYX:active {
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translate(2px, 2px);
 }
 
-.button:hover {
-    background-color: #4cae4c;
+.button-SYH:hover {
+    -webkit-text-size-adjust: 100%;
+    background-color: #2ba72b;
 }
+.button-SYH:active {
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translate(2px, 2px);
+}
+
+.button-ZLY:hover {
+    -webkit-text-size-adjust: 100%;
+    background-color: #4d0fc0;
+}
+.button-ZLY:active {
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translate(2px, 2px);
+}
+
+.button-XH:hover {
+    -webkit-text-size-adjust: 100%;
+    background-color: #cecb32;
+}
+.button-XH:active {
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translate(2px, 2px);
+}
+/* .button:hover {
+    background-color: #4cae4c;
+} */
 
 footer {
     margin-top: 260px;
@@ -77,4 +133,93 @@ footer {
     background-color: #2d6ca0;
     color: white;
     padding: 10px;
+}
+/* 按钮的隐藏效果 */
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+/* 设置搜索框的表单容器样式 */
+.use-baidu {
+    position: relative; 
+    display: inline-block;
+    text-align: center;
+    margin-top: 15px;
+}
+/* 设置输入框和按钮连在一起的样式 */
+.search-input {
+    width: 520px;
+    height: 16px;
+    padding: 12px 16px;
+    font-size: 16px;
+    vertical-align: top;
+    outline: 0;
+    box-shadow: none;
+    border-radius: 10px;
+    border: 2px solid #c4c7ce;
+    background: #fff;
+    color: #222;
+    overflow: hidden;
+    box-sizing: content-box;
+    -webkit-tap-highlight-color: transparent;
+}
+/* 按钮样式 */
+.search-button {
+    position: absolute;
+    top: 5px;
+    right: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 6px;
+    right: 6px; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    color: #2e2e2e;
+    background: transparent;
+    cursor: pointer;
+}
+/* 按钮悬停 */
+.search-button:hover {
+    font-size: 14px;
+    line-height: 1.6;
+    -webkit-text-size-adjust: 100%;
+    width: 30px;
+    height: 30px;
+    background-color: #4f4f4f4f;
+}
+/* 控制搜索栏的动画效果 */
+@keyframes slideInSearch {
+    from {
+        opacity: 0;
+        transform: translateY(+100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.search-img {
+    width: 200px;
+    height: 200px;
+    margin-left: 10px;
+    margin-top: 15px;
+    animation: slideInSearch 0.5s ease-in-out; /* 添加动画效果 */  
+}
+@keyframes slideInSearchImg {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
