@@ -4,9 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SYH Fans</title>
-    <link rel="stylesheet" href="style/SYH.css">
+    <!-- <link rel="stylesheet" href="style/SYH.css"> -->
+     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        img {
+            margin: 20px; /* 为每个图片添加外边距 */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* 添加动画效果 */
+            position: relative;
+            margin-top: 60px;
+        }
+
+        img:hover {
+            transform: scale(1.1); /* 鼠标悬停时放大 */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* 添加阴影 */
+        }
+
+        img:hover:active {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 阴影减少 */
+        }
+
+        .back-button {
+            position: relative;
+            top: 15px; 
+            left: 5px; 
+            background-color: #4894f8; 
+            color: white; 
+            padding: 10px 15px; 
+            text-decoration: none; 
+            border-radius: 5px; 
+            font-size: 14px;
+        }
+     </style>
 </head>
 <body>
-    <img src="img/SYX/SYX.JPG" alt="沈1" width="400" height="600">
+    <div>
+        <a href="index.html" class="back-button">
+            ←返回首页
+        </a>
+    </div>
+    <img src="img/SYX/SYX.JPG" alt="沈1" width="400" height="600" onclick="alert('瞅你咋地？')">
 </body>
 </html>

@@ -18,6 +18,8 @@
             width: 500px;
             height: 400px;
             transition: transform 0.3s ease, box-shadow 0.3s ease; /* 添加动画效果 */
+            position: relative;
+            margin-top: 60px;
         }
 
         img:hover {
@@ -29,15 +31,33 @@
             transform: scale(1.05);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 阴影减少 */
         }
+
+        .back-button {
+            position: relative;
+            top: 15px; 
+            left: 5px; 
+            background-color: #5cb85c; 
+            color: white; 
+            padding: 10px 15px; 
+            text-decoration: none; 
+            border-radius: 5px; 
+            font-size: 14px;
+        }
+
     </style>
 </head>
 <body>
-    <img src="img/SYH/1.png" alt="石1">
-    <img src="img/SYH/2.png" alt="石2">
-    <img src="img/SYH/3.png" alt="石3">
-    <img src="img/SYH/4.png" alt="石4">
-    <img src="img/SYH/5.png" alt="石5">
-    <img src="img/SYH/6.png" alt="石6">
-    <img src="img/SYH/7.jpg" alt="石7">
+    <div>
+        <a href="index.html" class="back-button">
+            ←返回首页
+        </a>
+    </div>
+    <img src="img/SYH/1.png" alt="石1" onclick="alert('都闭嘴，让我讲两句')">
+    <img src="img/SYH/2.png" alt="石2" onclick="alert('奥特曼发光入机')">
+    <img src="img/SYH/3.png" alt="石3" onclick="alert('思索版入机')">
+    <img src="img/SYH/4.png" alt="石4" onclick="alert('干杯')">
+    <img src="img/SYH/5.png" alt="石5" onclick="alert('躺着嘲笑版')">
+    <img src="img/SYH/6.png" alt="石6" onclick="alert('坐着嘲笑版')">
+    <img src="img/SYH/7.jpg" alt="石7" onclick="alert('你几把看我干什么？？')">
 </body>
 </html>
