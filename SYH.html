@@ -11,10 +11,69 @@
             margin: 0;
             padding: 10px;
         }
+        .menu {
+            position: absolute;
+            top: 20px;
+            left: 10px;
+        }
+
+        .menu-icon {
+            height: 40px;   /* 设置菜单图标的大小 */
+            width: 40px;    /* 设置菜单图标的大小 */
+            cursor: pointer; /* 鼠标悬停时显示为可点击 */
+        }
+
+        .dropdown-menu {
+            display: none; /* 初始时隐藏下拉菜单 */
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            position: absolute;
+            top: 90%; /* 菜单下方位置 */
+            left: 0;
+            background-color: #5cb85c; /* 设置下拉菜单的背景颜色 */
+            z-index: 9999;
+        }
+        
+        .dropdown-menu-more{
+            display: none; /* 初始时隐藏下拉菜单 */
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            position: absolute;
+            top: 0; /* 菜单下方位置 */
+            right: 100%;
+            background-color: #5cb85c; /* 设置下拉菜单的背景颜色 */
+            z-index: 9999;
+        }
+
+        
+        .dropdown-menu li {
+            width: 100px;
+            padding: 10px;
+            border-bottom: 1px solid #2a6b2a;       /*每个list之间分隔*/
+        }
+
+        .dropdown-menu li a {
+            color: #ffffff;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-menu li:hover{
+            background-color: #2a6b2a;
+        }
+        .dropdown-menu li:last-child {
+            border-bottom: none;            /*最后一个list没有分隔*/
+        }
+
+        .menu:hover .dropdown-menu {
+            display: block; /* 当鼠标悬停在菜单图标上时显示下拉菜单 */
+        }
 
         .SYH {
             text-align: center;
-            font-size: 40px;
+            font-size: 20px;
             color: #ffffff;
             background-color: #5cb85c;
             padding: 20px;
@@ -101,12 +160,20 @@
 </head>
 <body>
     <header>
+        <div class="menu">
+            <img src="img/index/Menu_Navigation_icon.png" alt="Menu" class="menu-icon">
+            <ul class="dropdown-menu">
+                <li><a href="#" onclick="alert('制作中~~')">菜单</a></li>
+                <li><a href="#" onclick="alert('喜欢点？')">更多</a></li>
+                <ul  class="dropdown-menu-more">
+                    <li><a href="ZLY.html">郑凌云</a></li>
+                </ul>
+                <li><a href="#" onclick="alert('飞起来！')">联系</a></li>
+                <li><a href="index.html">回到首页</a></li>
+            </ul>
+        </div>
         <h1 class="SYH"> 石宇航的神秘空间 </h1>
     </header>
-
-    <div>
-        <a href="index.html" class="back-button">←返回首页</a>
-    </div>
         <!-- 左按钮 -->
         <button class="arrow-button left">←</button>
     <div class="image-container">
