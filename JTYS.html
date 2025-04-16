@@ -12,6 +12,16 @@
             padding: 10px;
         }
         
+        .User-icon{                 /*用户头像*/
+            width: 10px;
+            height: 10px;
+            margin-right: 5px;
+        }
+
+        .Flex-link{
+            display: flex;            /* 只对特定的 <a> 标签应用 flexbox */
+    
+        }
         .menu {
             position: absolute;
             top: 15px;
@@ -64,12 +74,14 @@
         /*}*/
 
         .dropdown-menu li {
-            width: 100px;
+            width: 150px;
+            height: 30px;
             padding: 10px;
             border-bottom: 1px solid #ffffff;       /*每个list之间分隔*/
         }
 
         .dropdown-menu li a {
+            text-align: center;
             color: #ffffff;
             text-decoration: none;
             display: block;
@@ -92,11 +104,11 @@
         }
 
         .SYH {
-            text-align: center;
-            font-size: 20px;
-            color: #ffffff;
-            background-color: #5cb85c;
-            padding: 20px;
+            text-align: center !important;
+            font-size: 20px !important;
+            color: #ffffff !important;
+            background-color: #5cb85c !important;
+            padding: 20px !important;
         }
 
         .image-container {
@@ -186,9 +198,14 @@
                 <li><a href="#" onclick="alert('制作中~~')">菜单</a></li>
                 <li id="more"><a href="#" onclick="alert('喜欢点？')">更多</a></li>
                         <ul class="dropdown-menu-more">
-                            <li><a href="Pinkplasma.html">关阝冫夌 二厶</a></li>
-                            <li><a href="WORLDRAPID.html">氵冘火火火火日斤</a></li>
-                            <li><a href="E_5unday.html">彳余 曰天</a></li>
+                            <li>
+                                <a href="Pinkplasma.html" class="Flex-link">
+                                    <img src="img/ZLY/pink.png" alt="zly-icon" class="User-icon">
+                                    郑凌云
+                                </a>
+                            </li>
+                            <li><a href="WORLDRAPID.html">沈燚昕</a></li>
+                            <li><a href="E_5unday.html">徐昊</a></li>
                         </ul>
                 <li><a href="#" onclick="alert('飞起来！')">联系</a></li>
                 <li><a href="index.html">回到首页</a></li>
@@ -209,7 +226,6 @@
         <img src="img/SYH/5.png" alt="石5" onclick="alert('躺着嘲笑版')">
         <img src="img/SYH/6.png" alt="石6" onclick="alert('坐着嘲笑版')">
         <img src="img/SYH/7.jpg" alt="石7" onclick="alert('你几把看我干什么？？')">
-
     </div>
 
         <!-- 右按钮 -->
