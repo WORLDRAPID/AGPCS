@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYH Fans</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 10px;
+        }
+        
+        .menu {
+            position: absolute;
+            top: 20px;
+            left: 10px;
+        }
+
+        .menu-icon {
+            height: 40px;   /* 设置菜单图标的大小 */
+            width: 40px;    /* 设置菜单图标的大小 */
+            cursor: pointer; /* 鼠标悬停时显示为可点击 */
+        }
+
+        .dropdown-menu {
+            display: none; /* 初始时隐藏下拉菜单 */
+            padding: 0;
+            margin: 0;
+            position: absolute;
+            top: 90%; /* 菜单下方位置 */
+            left: 0;
+            background-color: #5cb85c; /* 设置下拉菜单的背景颜色 */
+            z-index: 1000;
+        }
+        
+        .dropdown-menu-more {
+            display: none; /* 初始时隐藏下拉菜单 */
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            position: absolute;
+            top: 0; /* 菜单下方位置 */
+            left: 100%;
+            background-color: #2a6b2a; /* 设置下拉菜单的背景颜色 */
+            z-index: 1001;
+        }
+
+        #more:hover + .dropdown-menu-more,
+        .dropdown-menu-more:hover {
+            display: block;
+        }
+        
+        /*.dropdown-menu-more li {
+            position: relative;
+            width: 100px;
+            padding: 10px;
+            border-bottom: 1px solid #5cb85c;       /*每个list之间分隔*/
+        /*}
+
+        .dropdown-menu-more li:last-child {
+            border-bottom: none;            /*最后一个list没有分隔*/
+        /*}*/
+
+        .dropdown-menu li {
+            width: 100px;
+            padding: 10px;
+            border-bottom: 1px solid #ffffff;       /*每个list之间分隔*/
+        }
+
+        .dropdown-menu li a {
+            color: #ffffff;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-menu li:hover {           /*高亮显示选中*/
+            background-color: #2a6b2a;
+        }
+
+        .dropdown-menu-more li:hover {           /*高亮显示选中*/
+            background-color: #5cb85c;
+        }
+
+        .dropdown-menu li:last-child {
+            border-bottom: none;            /*最后一个list没有分隔*/
+        }
+
+        .menu:hover .dropdown-menu {
+            display: block; /* 当鼠标悬停在菜单图标上时显示下拉菜单 */
+        }
+
+        .SYH {
+            text-align: center;
+            font-size: 20px;
+            color: #ffffff;
+            background-color: #5cb85c;
+            padding: 20px;
+        }
+
+        .image-container {
+            display: flex;
+            margin-top: 100px;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            height: 400px; /* 图片容器高度 */
+            position: relative; /* 为按钮定位设置基准 */
+        }
+
+        img {
+            margin: 20px;
+            width: 500px;
+            height: 400px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        img.active {
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-button {
+            position: relative;
+            top: 15px; 
+            left: 5px; 
+            background-color: #5cb85c; 
+            color: white; 
+            padding: 10px 15px; 
+            text-decoration: none; 
+            border-radius: 5px; 
+            font-size: 14px;
+        }
+
+        footer {
+            margin-top: 260px;
+            text-align: center;
+            background-color: #5cb85c;
+            color: white;
+            padding: 10px;
+        }
+
+        /* 左右按钮样式 */
+        .arrow-button {
+            position: absolute; /* 按钮在图片容器内绝对定位 */
+            top: 60%; /* 固定在图片容器的中间 */
+            transform: translateY(-50%);
+            background-color: gray; /* 灰色背景 */
+            color: white;
+            border: none;
+            width: 50px; /* 按钮宽度 */
+            height: 50px; /* 按钮高度 */
+            border-radius: 50%; /* 按钮改为圆形 */
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .arrow-button.left {
+            left: 16px; /* 固定在容器左侧 */
+        }
+
+        .arrow-button.right {
+            right: 16px; /* 固定在容器右侧 */
+        }
+
+        .arrow-button {
+            opacity: 0.7; /* 设置按钮为半透明 */
+        }
+
+        .arrow-button:hover {
+            background-color: #444; /* 鼠标悬停时按钮变为深灰色 */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="menu">
+            <img src="img/icon/Menu_Navigation_icon.png" alt="Menu" class="menu-icon">
+            <ul class="dropdown-menu">
+                <li><a href="#" onclick="alert('制作中~~')">菜单</a></li>
+                <li id="more"><a href="#" onclick="alert('喜欢点？')">更多</a></li>
+                        <ul class="dropdown-menu-more">
+                            <li><a href="Pinkplasma.html">关阝冫夌 二厶</a></li>
+                            <li><a href="WORLDRAPID.html">氵冘火火火火日斤</a></li>
+                            <li><a href="E_5unday.html">彳余 曰天</a></li>
+                        </ul>
+                <li><a href="#" onclick="alert('飞起来！')">联系</a></li>
+                <li><a href="index.html">回到首页</a></li>
+            </ul>
+        </div>
+        <h1 class="SYH"> 石宇航的神秘空间 </h1>
+    </header>
+        <!-- 左按钮 -->
+        <button class="arrow-button left">←</button>
+    <div class="image-container">
+
+        
+        <!-- 图片列表 -->
+        <img src="img/SYH/1.png" alt="石1" onclick="alert('都闭嘴，让我讲两句')">
+        <img src="img/SYH/2.png" alt="石2" onclick="alert('奥特曼发光入机')">
+        <img src="img/SYH/3.png" alt="石3" onclick="alert('思索版入机')">
+        <img src="img/SYH/4.png" alt="石4" onclick="alert('干杯')">
+        <img src="img/SYH/5.png" alt="石5" onclick="alert('躺着嘲笑版')">
+        <img src="img/SYH/6.png" alt="石6" onclick="alert('坐着嘲笑版')">
+        <img src="img/SYH/7.jpg" alt="石7" onclick="alert('你几把看我干什么？？')">
+
+    </div>
+
+        <!-- 右按钮 -->
+        <button class="arrow-button right">→</button>
+    <script>
+        // 获取图片和容器
+        const images = document.querySelectorAll('.image-container img');
+        const container = document.querySelector('.image-container');
+        const leftButton = document.querySelector('.arrow-button.left');
+        const rightButton = document.querySelector('.arrow-button.right');
+        let currentIndex = 0;
+
+        // 更新图片显示样式和滚动位置
+        function updateImages() {
+            images.forEach((img, idx) => {
+                img.classList.remove('active');
+                if (idx === currentIndex) {
+                    img.classList.add('active');
+                }
+            });
+
+            // 计算滚动偏移量
+            const selectedImage = images[currentIndex];
+            let scrollOffset = selectedImage.offsetLeft - container.clientWidth / 2 + selectedImage.clientWidth / 2;
+
+            // 如果是第一个图片，添加左侧空白
+            if (currentIndex === 0) {
+                scrollOffset = -200;
+            }
+
+            // 如果是最后一个图片，添加右侧空白
+            if (currentIndex === images.length - 1) {
+                scrollOffset = container.scrollWidth - container.clientWidth + 200;
+            }
+
+            // 滚动到计算的偏移量
+            container.scrollTo({
+                left: scrollOffset,
+                behavior: 'smooth'
+            });
+        }
+
+        // 左按钮点击事件
+        leftButton.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateImages();
+            }
+        });
+
+        // 右按钮点击事件
+        rightButton.addEventListener('click', () => {
+            if (currentIndex < images.length - 1) {
+                currentIndex++;
+                updateImages();
+            }
+        });
+
+        // 滚轮事件监听
+        images.forEach((img, index) => {
+            img.addEventListener('wheel', (event) => {
+                event.preventDefault(); // 防止页面默认滚动
+
+                if (event.deltaY > 0) { // 向下滚动（右移）
+                    if (currentIndex < images.length - 1) {
+                        currentIndex++;
+                        updateImages();
+                    }
+                } else { // 向上滚动（左移）
+                    if (currentIndex > 0) {
+                        currentIndex--;
+                        updateImages();
+                    }
+                }
+            });
+        });
+
+        // 初始化图片显示
+        updateImages();
+    </script>
+
+    <footer>
+        <p>&copy; JTYS</p>
+        <!-- 请了个入机来帮我打理代码，非常🙅‍好 -->
+    </footer>
+</body>
+</html>
