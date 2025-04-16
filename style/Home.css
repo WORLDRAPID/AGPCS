@@ -11,7 +11,7 @@ body {
 header {
     background-color: #2d6ca0;
     color: white;
-    padding: 60px;
+    padding: 40px;
     text-align: center;
     position: relative; /* 保持头部背景正常布局 */
 }

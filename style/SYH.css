@@ -1,7 +1,7 @@
 header{
-    background-color: #ff5f14;
+    background-color: #5cb85c;
     color: #ffffff;
-    padding: 60px;
+    padding: 40px;
     text-align: center;
     position: relative; /* 保持头部背景正常布局 */
 }
@@ -12,34 +12,4 @@ header h1 {
     left: 50%; /* 距离父元素左侧50% */
     transform: translate(-50%, -50%); /* 居中对齐 */
     margin: 0; /* 清除默认外边距 */
-}
-
-#weather-box {
-    position: fixed;  /* 固定定位 */
-    top: 50px;         /* 离顶部50px */
-    right: 0;          /* 靠右显示 */
-    width: 200px;      /* 宽度200px */
-    height: 500px;     /* 高度600px */
-    background-color: #fff;  /* 背景色 */
-    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);  /* 右边阴影效果 */
-    padding: 20px;     /* 内边距 */
-    overflow: hidden;  /* 超出部分隐藏 */
-    border-radius: 8px; /* 圆角效果 */
-    z-index: 9999;     /* 确保在其他元素之上 */
-}
-
-
-/* 给天气内容的容器添加样式 */
-.weather-content {
-    overflow-y: auto;  /* 如果内容超出，启用滚动 */
-    height: 100%;      /* 让内容自适应 */
-}
-
-.weather-header{
-    background-color: #ff9900; 
-    color: #ffffff;
-    padding: 8px 2px;
-    text-align: center;
-    border-radius: 4px; 
-    
 }
