@@ -44,21 +44,45 @@
         }
 
         .menu:hover .dropdown-menu {
-        display: block; /* 显示菜单 */
-        background-color: #5cb85c; /* 悬停时改变背景颜色 */
-        animation: dropdown 0.3s ease-in-out; /* 添加下拉动画效果 */
-    }
+            display: block; /* 显示菜单 */
+            background-color: #5cb85c; /* 悬停时改变背景颜色 */
+            animation: dropdown 0.3s ease-in-out; /* 添加下拉动画效果 */
+        }
 
-    @keyframes dropdown {
-        from {
-            opacity: 0; /* 初始透明度为0，隐藏状态 */
-            transform: translateY(-20px); /* 从上方滑入 */
+        /* 下拉动画 */
+        @keyframes dropdown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px); /* 从上方滑入 */
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0); /* 停留在原位置 */
+            }
         }
-        to {
-            opacity: 1; /* 完全显示 */
-            transform: translateY(0); /* 停留在原位置 */
+
+        /* 收回动画 */
+        @keyframes slide-up {
+            from {
+                opacity: 1;
+                transform: translateY(0); /* 从当前位置开始 */
+            }
+            to {
+                opacity: 0;
+                transform: translateY(-20px); /* 向上滑动消失 */
+            }
         }
-    }
+
+        /* 鼠标悬停时显示菜单 */
+        .menu:hover .dropdown-menu {
+            display: block;
+            animation: dropdown 0.3s ease-in-out forwards;
+        }
+
+        /* 鼠标移开时隐藏菜单 */
+        .menu:not(:hover) .dropdown-menu {
+            animation: slide-up 0.3s ease-in-out forwards;
+        }
 
         .menu {
             position: absolute;
@@ -73,7 +97,6 @@
         }
 
         .dropdown-menu {
-            display: none; /* 初始时隐藏下拉菜单 */
             padding: 0;
             margin: 0;
             position: absolute;
@@ -91,7 +114,7 @@
             position: absolute;
             top: 0; /* 菜单下方位置 */
             left: 100%;
-            background-color: #2a6b2a; /* 设置下拉菜单的背景颜色 */
+            background-color: #5cb85c; /* 设置下拉菜单的背景颜色 */
             z-index: 1001;
         }
 
@@ -115,7 +138,8 @@
             width: 150px;
             height: 30px;
             padding: 10px;
-            border-bottom: 1px solid #ffffff;       /*每个list之间分隔*/
+            border-bottom: 1px solid #ffffff; /* 每个list之间分隔 */
+            border-left: 1px solid #ffffff; /* 左边添加白色分割线 */
         }
 
         .dropdown-menu li a {
@@ -130,7 +154,7 @@
         }
 
         .dropdown-menu-more li:hover {           /*高亮显示选中*/
-            background-color: #5cb85c;
+            background-color: #2a6b2a;
         }
 
         .dropdown-menu li:last-child {
