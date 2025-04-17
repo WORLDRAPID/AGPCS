@@ -12,25 +12,29 @@
     /* 定义RGB */
     @keyframes rainbow {
     0% {
-      background-position: 0% 50%;
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
     }
     100% {
-      background-position: 100% 50%;
+        background-position: 0% 50%; /* 循环回到起点 */
     }
-  }
-
-    /* 增加到文字上，使文字性能加强1000%！ */
-    .rainbow-text {
-        font-size: 3rem;
-        font-weight: bold;
-        text-transform: uppercase;
-        background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet, violet, indigo, blue, green, orange, red); /* 起点和终点颜色一致 */
-        background-size: 300%; /* 扩大背景以实现流动效果 */
-        background-clip: text; /* 标准属性 */
-        -webkit-background-clip: text; /* 仅将背景应用到文字 */
-        -webkit-text-fill-color: transparent; /* 使文字本身透明 */
-        animation: rainbow 8s linear infinite; /* 应用动画 */
 }
+    /* 增加文字渐变效果，使文字性能增强1000%! */
+.rainbow-text {
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet, violet, indigo, blue, green, orange, red);
+    background-size: 300%; /* 扩大背景以实现流动效果 */
+    background-clip: text; /* 标准属性 */
+    -webkit-background-clip: text; /* 仅将背景应用到文字 */
+    -webkit-text-fill-color: transparent; /* 使文字本身透明 */
+    animation: rainbow 8s linear infinite; /* 平滑且不间断 */
+    white-space: nowrap; /* 防止文字换行 */
+}
+
 
     #app {
         max-width: 500px;
