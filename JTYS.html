@@ -43,6 +43,23 @@
             display: block;
         }
 
+        .menu:hover .dropdown-menu {
+        display: block; /* 显示菜单 */
+        background-color: #5cb85c; /* 悬停时改变背景颜色 */
+        animation: dropdown 0.3s ease-in-out; /* 添加下拉动画效果 */
+    }
+
+    @keyframes dropdown {
+        from {
+            opacity: 0; /* 初始透明度为0，隐藏状态 */
+            transform: translateY(-20px); /* 从上方滑入 */
+        }
+        to {
+            opacity: 1; /* 完全显示 */
+            transform: translateY(0); /* 停留在原位置 */
+        }
+    }
+
         .menu {
             position: absolute;
             top: 28px;
