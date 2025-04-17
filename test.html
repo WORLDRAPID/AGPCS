@@ -26,10 +26,11 @@
         text-transform: uppercase;
         background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet, violet, indigo, blue, green, orange, red); /* 起点和终点颜色一致 */
         background-size: 300%; /* 扩大背景以实现流动效果 */
+        background-clip: text; /* 标准属性 */
         -webkit-background-clip: text; /* 仅将背景应用到文字 */
         -webkit-text-fill-color: transparent; /* 使文字本身透明 */
         animation: rainbow 8s linear infinite; /* 应用动画 */
-    }
+}
 
     #app {
         max-width: 500px;
