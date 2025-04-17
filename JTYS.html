@@ -24,6 +24,25 @@
             display: flex;            /* 只对特定的 <a> 标签应用 flexbox */
     
         }
+
+        .dropdown-menu li {
+            width: auto; /* 根据内容自动调整宽度 */
+            max-width: 150px; /* 设置最大宽度，避免超出显示范围 */
+            height: auto; /* 根据内容自动调整高度 */
+            padding: 10px;
+            border-bottom: 1px solid #ffffff; /* 每个list之间分隔 */
+            white-space: nowrap; /* 防止文字换行 */
+            overflow: hidden; /* 隐藏超出范围的文字 */
+            text-overflow: ellipsis; /* 超出范围显示省略号 */
+        }
+
+        .dropdown-menu li a {
+            text-align: center; /* 文本居中对齐 */
+            color: #ffffff;
+            text-decoration: none;
+            display: block;
+        }
+
         .menu {
             position: absolute;
             top: 28px;
@@ -221,7 +240,7 @@
                                     <img src="img/XH/H.png" alt="xh-icon" class="User-icon">
                                     艺桑嘚</a></li>
                         </ul>
-                <li><a href="#" onclick="alert('飞起来！')">普挼课踢死 按得 摸 泼飞科特</a></li>
+                <li><a href="#" onclick="alert('飞起来！')">普挼课踢死摸泼飞科特</a></li>
                 <li><a href="index.html">回到首页</a></li>
             </ul>
         </div>

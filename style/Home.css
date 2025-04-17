@@ -22,6 +22,7 @@ header h1 {
     left: 50%; /* 距离父元素左侧50% */
     transform: translate(-50%, -50%); /* 居中对齐 */
     margin: 0; /* 清除默认外边距 */
+    white-space: nowrap; /* 防止文字换行 */
 }
 @keyframes fadeIn {
     from {
