@@ -86,6 +86,7 @@
         }
         
         .dropdown-menu-more {
+            color: #ffffff; /* 确保文字颜色为白色 */
             display: none; /* 初始时隐藏下拉菜单 */
             list-style: none;
             padding: 0;
@@ -93,7 +94,7 @@
             position: absolute;
             top: 0; /* 菜单下方位置 */
             left: 100%;
-            background-color: #2a6b2a; /* 设置下拉菜单的背景颜色 */
+            background-color: #5cb85c; /* 设置下拉菜单的背景颜色 */
             z-index: 1001;
         }
 
@@ -116,7 +117,7 @@
         .dropdown-menu li {
             width: 150px;
             height: 30px;
-            padding: 10px;
+            padding: 10px; 
             border-bottom: 1px solid #ffffff;       /*每个list之间分隔*/
         }
 
@@ -127,14 +128,14 @@
             display: block;
         }
 
-        .dropdown-menu li:hover {           /*高亮显示选中*/
-            background-color: #2a6b2a;
+        .dropdown-menu-more li:hover {
+            background-color: #2a6b2a; /* 悬停时的背景颜色 */
         }
 
-        .dropdown-menu-more li:hover {           /*高亮显示选中*/
-            background-color: #5cb85c;
+        .dropdown-menu-more li a {
+            color: #ffffff; /* 确保文字颜色为白色 */
+            text-decoration: none; /* 去掉下划线 */
         }
-
         .dropdown-menu li:last-child {
             border-bottom: none;            /*最后一个list没有分隔*/
         }
