@@ -116,18 +116,34 @@
         #more:hover + .dropdown-menu-more,
         .dropdown-menu-more:hover {
             display: block;
+            animation: slide-in 0.3s ease-in-out forwards; /* 鼠标悬停时触发滑入动画 */
         }
-        
-        /*.dropdown-menu-more li {
-            position: relative;
-            width: 100px;
-            padding: 10px;
-            border-bottom: 1px solid #5cb85c;       /*每个list之间分隔*/
-        /*}
 
-        .dropdown-menu-more li:last-child {
-            border-bottom: none;            /*最后一个list没有分隔*/
-        /*}*/
+        .dropdown-menu-more {
+            animation: none; /* 默认无动画 */
+        }
+
+        @keyframes slide-in {
+            from {
+            opacity: 0;
+            transform: translateX(-20px); /* 从左侧滑入 */
+            }
+            to {
+            opacity: 1;
+            transform: translateX(0); /* 停留在原位置 */
+            }
+        }
+
+        @keyframes slide-out {
+            from {
+            opacity: 1;
+            transform: translateX(0); /* 从当前位置开始 */
+            }
+            to {
+            opacity: 0;
+            transform: translateX(-20px); /* 向左滑动消失 */
+            }
+        }
 
         .dropdown-menu li {
             width: 150px;
