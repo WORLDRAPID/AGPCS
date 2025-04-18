@@ -229,7 +229,7 @@ footer {
     justify-content: center;
     border: none;
     border-radius: 6px;
-    top: 86%; 
+    top: 85%; 
     transform: translate(-35px, -50%); /* Move left by 5px */
     color: #2e2e2e;
     background: transparent;
