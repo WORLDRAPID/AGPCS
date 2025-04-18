@@ -356,18 +356,38 @@
         // 左按钮点击事件
         leftButton.addEventListener('click', () => {
             if (currentIndex > 0) {
-                currentIndex--;
-                updateImages();
+            currentIndex--;
+            updateImages();
             }
+            leftButton.style.backgroundColor = '#2a6b2a'; // 添加点击时的背景颜色
+            setTimeout(() => {
+            leftButton.style.backgroundColor = 'gray'; // 恢复原始背景颜色
+            }, 200); // 延迟恢复
         });
 
         // 右按钮点击事件
         rightButton.addEventListener('click', () => {
             if (currentIndex < images.length - 1) {
-                currentIndex++;
-                updateImages();
+            currentIndex++;
+            updateImages();
             }
+            rightButton.style.backgroundColor = '#2a6b2a'; // 添加点击时的背景颜色
+            setTimeout(() => {
+            rightButton.style.backgroundColor = 'gray'; // 恢复原始背景颜色
+            }, 200); // 延迟恢复
         });
+
+        // 固定按钮位置
+        function setButtonPositions() {
+            const containerRect = container.getBoundingClientRect();
+            leftButton.style.top = `${containerRect.top + containerRect.height / 2}px`;
+            leftButton.style.left = `${containerRect.left - leftButton.offsetWidth + 60}px`; // 向右移动50px
+            rightButton.style.top = `${containerRect.top + containerRect.height / 2}px`;
+            rightButton.style.left = `${containerRect.right - 60}px`; // 向左移动50px
+        }
+
+        // 初始化按钮位置
+        setButtonPositions();
 
         // 滚轮事件监听
         images.forEach((img, index) => {
