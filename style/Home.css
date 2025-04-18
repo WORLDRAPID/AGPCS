@@ -17,6 +17,7 @@ header {
 }
 
 header h1 {
+    font-size: 50px;
     position: absolute; /* 使文字完全固定 */
     top: 50%; /* 距离父元素顶部50% */
     left: 50%; /* 距离父元素左侧50% */
@@ -38,6 +39,7 @@ main {
 }
 
 .login-button {
+    /* 按钮高度在主网页设置 */
     padding: 8px 16px; 
     background-color: #ff9900; 
     color: white; 
@@ -45,6 +47,14 @@ main {
     border-radius: 5px; 
     font-size: 12px; 
     position: relative;
+}
+
+.login-button:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* 悬停时添加阴影效果 */
+}
+
+.login-button:active {
+    background-color: #da8300; /* 点击时更改背景颜色 */
 }
 
 .index-left-button {
@@ -60,93 +70,68 @@ main {
     margin-top: 15px;
     margin-left: -200px;
 }
-
+/* 设置按钮高度 */
 .button-SYX {
+    margin-top: 15px;
+}
+
+.button-SYX, .button-SYH, .button-ZLY, .button-XH {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 12px 24px;
     font-size: 16px;
     color: white;
-    background-color: #4894f8;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     text-decoration: none;
     cursor: pointer;
-    margin-top: 25px;
-    margin-left: 100px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.button-SYX {
+    background: linear-gradient(45deg, #4894f8, #1e3fa8);
 }
 
 .button-SYH {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: white;
-    background-color: #5cb85c;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    cursor: pointer;
-    margin-left: 30px;
+    background: linear-gradient(45deg, #5cb85c, #2e8b57);
 }
 
 .button-ZLY {
-    display: inline-block;
-    padding: 10px 12px;
-    font-size: 16px;
-    color: white;
-    background-color: #5f1fd6;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    cursor: pointer;
-    margin-left: -40px;
+    background: linear-gradient(45deg, #5f1fd6, #2a0a8e);
 }
 
 .button-XH {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: white;
-    background-color: #ebe835;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    cursor: pointer;
-    margin-left: -110px;
-}
-.button-SYX:hover {
-    -webkit-text-size-adjust: 100%;
-    background-color: #286ac0;
-}
-.button-SYX:active {
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
-    transform: translate(2px, 2px);
+    background: linear-gradient(45deg, #ebe835, #c4c120);
 }
 
-.button-SYH:hover {
-    -webkit-text-size-adjust: 100%;
-    background-color: #189618;
-}
-.button-SYH:active {
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
-    transform: translate(2px, 2px);
+.button-SYX:hover, .button-SYH:hover, .button-ZLY:hover, .button-XH:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
-.button-ZLY:hover {
-    -webkit-text-size-adjust: 100%;
-    background-color: #440eaa;
-}
-.button-ZLY:active {
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
-    transform: translate(2px, 2px);
+.button-SYX::before, .button-SYH::before, .button-ZLY::before, .button-XH::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: skewX(-45deg);
+    transition: all 0.5s ease;
 }
 
-.button-XH:hover {
-    -webkit-text-size-adjust: 100%;
-    background-color: #c4c120;
+.button-SYX:hover::before, .button-SYH:hover::before, .button-ZLY:hover::before, .button-XH:hover::before {
+    left: 100%;
 }
-.button-XH:active {
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
-    transform: translate(2px, 2px);
+
+.button-SYX:active, .button-SYH:active, .button-ZLY:active, .button-XH:active {
+    transform: scale(0.95);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 /* .button:hover {
     background-color: #4cae4c;
