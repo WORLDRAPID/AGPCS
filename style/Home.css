@@ -203,7 +203,6 @@ footer {
     margin-top: 15px;
     margin-left: -110px; /* Align with XH button */
 }
-
 /* 设置输入框和按钮连在一起的样式 */
 .search-input {
     width: 520px;
@@ -226,16 +225,12 @@ footer {
 /* 按钮样式 */
 .search-button {
     position: absolute;
-    top: 5px;
-    right: 7px;
-    display: flex;
     align-items: center;
     justify-content: center;
     border: none;
     border-radius: 6px;
-    right: 6px; 
     top: 86%; 
-    transform: translateY(-50%); 
+    transform: translate(-35px, -50%); /* Move left by 5px */
     color: #2e2e2e;
     background: transparent;
     cursor: pointer;
@@ -259,6 +254,52 @@ footer {
         opacity: 1;
         transform: translateY(0);
     }
+}
+.switch-button-baidu {
+    display: inline-block;
+    padding: 4px 14px;
+    font-size: 10px;
+    color: white;
+    background-color: #0400ff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-left: 118px;
+    transition: all 0.3s ease; /* 添加平滑过渡效果，用于悬停和点击状态 */
+}
+
+.switch-button-baidu:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* 悬停时添加阴影效果 */
+}
+
+.switch-button-baidu:active {
+    background-color: #0000bb; /* 点击时更改背景颜色 */
+}
+
+.switch-button-bili {
+    position: absolute;
+    display: inline-block;
+    padding: 4px 8px;
+    font-size: 10px;
+    color: white;
+    background-color: #ff61ab;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-left: -200px;
+    transition: all 0.3s ease; /* 添加平滑过渡效果，用于悬停和点击状态 */
+}
+
+.switch-button-bili:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* 悬停时添加阴影效果 */
+}
+
+.switch-button-bili:active {
+    background-color: #ca4095; /* 点击时更改背景颜色 */
 }
 .search-img {
     width: 200px;
