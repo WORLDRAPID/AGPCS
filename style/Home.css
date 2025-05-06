@@ -159,6 +159,7 @@ main {
 }
 
 .vertical-buttons a {
+    margin-top: 5px;
     transition: all 0.5s ease;
 }
 
