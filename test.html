@@ -1,211 +1,499 @@
-<script src="js/vue.global.js"></script>
 <!-- <link rel="stylesheet" href="style/test.css"> -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/vue.global.js"></script>
+    <title>LOGIN | 请登录</title>
+    <style>
+        :root {
+            --neon-blue: #00f3ff;
+            --dark-bg: #0a0a1a;
+            --cyber-gradient: linear-gradient(45deg, #00162e, #0a0a1a);
+        }
 
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f9f9f9;
-        margin: 0;
-        padding: 20px;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background: var(--cyber-gradient);
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* 动态网格背景 */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: 
+                linear-gradient(rgba(0, 243, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: -1;
+        }
+
+        /* 导航栏 */
+        .cyber-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            /* background: rgba(10, 10, 26, 0.95); */
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 35px;
+            font-weight: bold;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, var(--neon-blue), #7d12ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            background: rgba(0, 243, 255, 0.1);
+        }
+
+        /* 下拉菜单基础样式 */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(10, 10, 26, 0.95);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,243,255,0.2);
+            z-index: 1000;
+            border: 1px solid rgba(0,243,255,0.3);
+            border-radius: 4px;
+            padding: 10px 0;
+        }
+
+        /* 悬停显示菜单 */
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            animation: menuSlide 0.3s ease;
+        }
+
+        /* 下拉菜单项样式 */
+        .dropdown-menu li {
+            padding: 8px 20px;
+            transition: all 0.3s;
+        }
+
+        .dropdown-menu li:hover {
+            background: rgba(0,243,255,0.1);
+        }
+
+        .Flex-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .User-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+        }
+
+        .dropdown-menu li {
+            width: auto; /* 根据内容自动调整宽度 */
+            max-width: 150px; /* 设置最大宽度，避免超出显示范围 */
+            height: auto; /* 根据内容自动调整高度 */
+            padding: 10px;
+            border-bottom: 1px solid #ffffff; /* 每个list之间分隔 */
+            white-space: nowrap; /* 防止文字换行 */
+            overflow: hidden; /* 隐藏超出范围的文字 */
+            text-overflow: ellipsis; /* 超出范围显示省略号 */
+        }
+
+        .dropdown-menu li a {
+            text-align: center; /* 文本居中对齐 */
+            color: #ffffff;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* 下拉动画 */
+        @keyframes menuSlide {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 主内容区 */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        /* 定义RGB */
+        @keyframes rainbow {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%; /* 循环回到起点 */
+        }
+        }
+        /* 增加文字渐变效果，使文字性能增强1000%! */
+        .rainbow-text {
+            font-size: 3rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet, violet, indigo, blue, green, orange, red);
+            background-size: 300%; /* 扩大背景以实现流动效果 */
+            background-clip: text; /* 标准属性 */
+            -webkit-background-clip: text; /* 仅将背景应用到文字 */
+            -webkit-text-fill-color: transparent; /* 使文字本身透明 */
+            animation: rainbow 8s linear infinite; /* 平滑且不间断 */
+            white-space: nowrap; /* 防止文字换行 */
+        }
     
-    /* 定义RGB */
-    @keyframes rainbow {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%; /* 循环回到起点 */
-    }
-}
-    /* 增加文字渐变效果，使文字性能增强1000%! */
-.rainbow-text {
-    font-size: 3rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet, violet, indigo, blue, green, orange, red);
-    background-size: 300%; /* 扩大背景以实现流动效果 */
-    background-clip: text; /* 标准属性 */
-    -webkit-background-clip: text; /* 仅将背景应用到文字 */
-    -webkit-text-fill-color: transparent; /* 使文字本身透明 */
-    animation: rainbow 8s linear infinite; /* 平滑且不间断 */
-    white-space: nowrap; /* 防止文字换行 */
-}
+    
+        #app {
+            max-width: 500px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    
+        h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+    
+        p {
+            margin: 10px 0;
+        }
+    
+        .QQ, .phone, .email {
+            margin-left: 15px;
+        }
+    
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+    
+        input[type="text"],
+        input[type="password"] {
+            width: calc(80% - 20px);
+            padding: 8px;
+            margin-top: 6px;
+            border: 1.5px solid #b9b9b9;
+            border-radius: 4px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    
+        button {
+            background-color: #ff9900;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 10px auto;
+            text-align: center;
+        }
+    
+        button:hover {
+            background-color: #ca7900;
+        }
+    
+        .fade-enter-active, .fade-leave-active {
+            transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+        }
+    
+        .fade-enter-from, .fade-leave-to {
+            max-height: 0;
+            opacity: 0;
+        }
+    
+        .fade-enter-to, .fade-leave-from {
+            max-height: 500px; /* 设置适当高度以容纳内容 */
+            opacity: 1;
+        }
+        .hero-content {
+            max-width: 800px;
+        }
 
+        .cyber-title {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px var(--neon-blue);
+            position: relative;
+            animation: neonPulse 2s infinite;
+        }
 
-    #app {
-        max-width: 500px;
-        margin: 20px auto;
-        background: #fff;
-        padding: 30px;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
+        /* 作品展示区 */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-    h3 {
-        color: #333;
-        margin-bottom: 10px;
-    }
+        .cyber-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+        }
 
-    p {
-        margin: 10px 0;
-    }
+        .cyber-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.2);
+        }
 
-    .QQ, .phone, .email {
-        margin-left: 15px;
-    }
+        /* 动态效果 */
+        @keyframes neonPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
 
-    input[type="radio"] {
-        margin-right: 5px;
-    }
-
-    input[type="text"],
-    input[type="password"] {
-        width: calc(80% - 20px);
-        padding: 8px;
-        margin-top: 6px;
-        border: 1.5px solid #b9b9b9;
-        border-radius: 4px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    button {
-        background-color: #ff9900;
-        color: white;
-        border: none;
-        padding: 10px 18px;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 16px;
-        display: block;
-        margin: 10px auto;
-        text-align: center;
-    }
-
-    button:hover {
-        background-color: #ca7900;
-    }
-
-    .fade-enter-active, .fade-leave-active {
-        transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
-    }
-
-    .fade-enter-from, .fade-leave-to {
-        max-height: 0;
-        opacity: 0;
-    }
-
-    .fade-enter-to, .fade-leave-from {
-        max-height: 500px; /* 设置适当高度以容纳内容 */
-        opacity: 1;
-    }
-</style>
-
-<div>
-    <h1 class="rainbow-text" style="text-align: center;">欢迎来到WORLDRAPID的奇妙小网站</h1>
-    <p style="text-align: center;margin-bottom: 40px;">请登录以继续...</p>
-    <!-- 文字的间隔样式在这里 -->
-    <a href="index.html" style="position: absolute; top: 100px; left: 15px; text-decoration: none; background-color: #007bff; color: white; padding: 8px 12px; border-radius: 4px; font-size: 14px;">返回首页</a>
-</div>
-<div id="app">
-    <p>
-        请选择登陆类型：
-        <input type="radio" id="qq" value="qq" v-model="loginType">QQ登录
-        <input type="radio" id="phone" value="phone" v-model="loginType">手机登录
-        <input type="radio" id="email" value="email" v-model="loginType">邮箱登录
-    </p>
-
-    <transition name="fade">
-        <div v-if="loginType === 'qq'" key="qq">
-            <h3>QQ登录</h3>
-            <p class="QQ">QQ账号：<br><input type="text" placeholder="请输入QQ账号" v-model="qqAccount"></p>
-            <p class="QQ">QQ密码：<br><input type="password" placeholder="请输入密码" v-model="qqPassword"></p>
-            <p><button @click="validateQQ">登录</button></p>
-            <p v-if="errorMessage">{{ errorMessage }}</p>
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .cyber-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="cyber-nav">
+        <div class="nav-container">
+            <div class="nav-logo">LOGIN | 请登录</div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">首页</a>
+                
+                <!-- 下拉菜单容器 -->
+                <div class="dropdown">
+                    <div class="nav-link">更多 ▼</div>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="Pinkplasma.html" class="Flex-link">
+                                <img src="img/ZLY/pink.png" alt="zly-icon" class="User-icon">
+                                品客普拉斯马
+                            </a>
+                        </li>
+                        <li>
+                            <a href="WORLDRAPID.html" class="Flex-link">
+                                <img src="img/SYX/nazi.png" alt="syx-icon" class="User-icon">
+                                沃德挼劈德
+                            </a>
+                        </li>
+                        <li>
+                            <a href="E_5unday.html" class="Flex-link">
+                                <img src="img/XH/H.png" alt="xh-icon" class="User-icon">
+                                艺桑嘚
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+    
+                <a href="#about" class="nav-link" onclick="alert('怎么，暗恋我？')">关于</a>
+                <a href="#contact" class="nav-link" onclick="alert('你还想联系上我？想得美')">联系</a>
+            </div>
         </div>
-    </transition>
+    </nav>
+    
 
-    <transition name="fade">
-        <div v-if="loginType === 'phone'" key="phone">
-            <h3>手机登录</h3>
-            <p class="phone">手机号：<br><input type="text" placeholder="请输入手机号" v-model="phoneNumber"></p>
-            <p class="phone">验证码：<br><input type="text" placeholder="请输入验证码" v-model="verificationCode"></p>
-            <p><button @click="validatePhone">登录</button></p>
-            <p v-if="errorMessage">{{ errorMessage }}</p>
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="cyber-title">登录网页</h1>
+            <p class="cyber-subtitle">但是不能登录因为我懒得做😊</p>
         </div>
-    </transition>
+    </section>
+    <style>
+        
+    </style>
+    
+    <div>
+        <h1 class="rainbow-text" style="text-align: center;">欢迎来到WORLDRAPID的奇妙小网站</h1>
+        <p style="text-align: center;margin-bottom: 40px;">请登录以继续...</p>
+        <!-- 文字的间隔样式在这里 -->
+    </div>
+    <div id="app">
+        <p>
+            请选择登陆类型：
+            <input type="radio" id="qq" value="qq" v-model="loginType">QQ登录
+            <input type="radio" id="phone" value="phone" v-model="loginType">手机登录
+            <input type="radio" id="email" value="email" v-model="loginType">邮箱登录
+        </p>
+    
+        <transition name="fade">
+            <div v-if="loginType === 'qq'" key="qq">
+                <h3>QQ登录</h3>
+                <p class="QQ">QQ账号：<br><input type="text" placeholder="请输入QQ账号" v-model="qqAccount"></p>
+                <p class="QQ">QQ密码：<br><input type="password" placeholder="请输入密码" v-model="qqPassword"></p>
+                <p><button @click="validateQQ">登录</button></p>
+                <p v-if="errorMessage">{{ errorMessage }}</p>
+            </div>
+        </transition>
+    
+        <transition name="fade">
+            <div v-if="loginType === 'phone'" key="phone">
+                <h3>手机登录</h3>
+                <p class="phone">手机号：<br><input type="text" placeholder="请输入手机号" v-model="phoneNumber"></p>
+                <p class="phone">验证码：<br><input type="text" placeholder="请输入验证码" v-model="verificationCode"></p>
+                <p><button @click="validatePhone">登录</button></p>
+                <p v-if="errorMessage">{{ errorMessage }}</p>
+            </div>
+        </transition>
+    
+        <transition name="fade">
+            <div v-if="loginType === 'email'" key="email">
+                <h3>邮箱登录</h3>
+                <p class="email">邮箱：<br><input type="text" placeholder="请输入邮箱" v-model="email"></p>
+                <p class="email">密码：<br><input type="password" placeholder="请输入密码" v-model="emailPassword"></p>
+                <p><button @click="validateEmail">登录</button></p>
+                <p v-if="errorMessage">{{ errorMessage }}</p>
+            </div>
+        </transition>
+    </div>
+    
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    loginType: null,
+                    qqAccount: '',
+                    qqPassword: '',
+                    phoneNumber: '',
+                    verificationCode: '',
+                    email: '',
+                    emailPassword: '',
+                    errorMessage: '',
+                };
+            },
+            methods: {
+                validateQQ() {
+                    if (!this.qqAccount && !this.qqPassword) {
+                        this.errorMessage = 'QQ账号或密码不能为空';
+                    } else if (!this.qqAccount) {
+                        this.errorMessage = 'QQ账号不能为空';
+                    } else if (!this.qqPassword) {
+                        this.errorMessage = 'QQ密码不能为空';
+                    } else {
+                        this.errorMessage = '';
+                        alert('我让你登了吗你就登？');
+                    }
+                },
+                validatePhone() {
+                    if (!this.phoneNumber && !this.verificationCode) {
+                        this.errorMessage = '手机号或验证码不能为空';
+                    } else if (!this.phoneNumber) {
+                        this.errorMessage = '手机号不能为空';
+                    } else if (!this.verificationCode) {
+                        this.errorMessage = '验证码不能为空';
+                    } else {
+                        this.errorMessage = '';
+                        alert('登录成功');
+                    }
+                },
+                validateEmail() {
+                    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // 邮箱格式的正则表达式
+    
+                    if (!this.email && !this.emailPassword) {
+                        this.errorMessage = '邮箱或密码不能为空';
+                    } else if (!this.email) {
+                        this.errorMessage = '邮箱不能为空';
+                    } else if (!emailRegex.test(this.email)) { // 使用正则表达式验证账号格式
+                    this.errorMessage = '邮箱格式不正确';
+                    } else if (!this.emailPassword) {
+                        this.errorMessage = '密码不能为空';
+                    } else {
+                        this.errorMessage = '';
+                        alert('登录成功');
+                    }
+                },
+            },
+        }).mount("#app");
+    </script>
 
-    <transition name="fade">
-        <div v-if="loginType === 'email'" key="email">
-            <h3>邮箱登录</h3>
-            <p class="email">邮箱：<br><input type="text" placeholder="请输入邮箱" v-model="email"></p>
-            <p class="email">密码：<br><input type="password" placeholder="请输入密码" v-model="emailPassword"></p>
-            <p><button @click="validateEmail">登录</button></p>
-            <p v-if="errorMessage">{{ errorMessage }}</p>
+    <section id="portfolio" class="portfolio-grid">
+        <div class="cyber-card">
+            <h3>未来项目</h3>
+            <p>探索人工智能与交互设计的融合</p>
         </div>
-    </transition>
-</div>
+        <div class="cyber-card">
+            <h3>数据可视化</h3>
+            <p>复杂数据的艺术化呈现</p>
+        </div>
+        <div class="cyber-card">
+            <h3>沉浸式体验</h3>
+            <p>虚拟与现实的边界探索</p>
+        </div>
+    </section>
 
-<script>
-    Vue.createApp({
-        data() {
-            return {
-                loginType: null,
-                qqAccount: '',
-                qqPassword: '',
-                phoneNumber: '',
-                verificationCode: '',
-                email: '',
-                emailPassword: '',
-                errorMessage: '',
-            };
-        },
-        methods: {
-            validateQQ() {
-                if (!this.qqAccount && !this.qqPassword) {
-                    this.errorMessage = 'QQ账号或密码不能为空';
-                } else if (!this.qqAccount) {
-                    this.errorMessage = 'QQ账号不能为空';
-                } else if (!this.qqPassword) {
-                    this.errorMessage = 'QQ密码不能为空';
-                } else {
-                    this.errorMessage = '';
-                    alert('我让你登了吗你就登？');
-                }
-            },
-            validatePhone() {
-                if (!this.phoneNumber && !this.verificationCode) {
-                    this.errorMessage = '手机号或验证码不能为空';
-                } else if (!this.phoneNumber) {
-                    this.errorMessage = '手机号不能为空';
-                } else if (!this.verificationCode) {
-                    this.errorMessage = '验证码不能为空';
-                } else {
-                    this.errorMessage = '';
-                    alert('登录成功');
-                }
-            },
-            validateEmail() {
-                const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // 邮箱格式的正则表达式
-
-                if (!this.email && !this.emailPassword) {
-                    this.errorMessage = '邮箱或密码不能为空';
-                } else if (!this.email) {
-                    this.errorMessage = '邮箱不能为空';
-                } else if (!emailRegex.test(this.email)) { // 使用正则表达式验证账号格式
-                this.errorMessage = '邮箱格式不正确';
-                } else if (!this.emailPassword) {
-                    this.errorMessage = '密码不能为空';
-                } else {
-                    this.errorMessage = '';
-                    alert('登录成功');
-                }
-            },
-        },
-    }).mount("#app");
-</script>
+    <!-- 可以继续添加其他模块 -->
+</body>
+</html>

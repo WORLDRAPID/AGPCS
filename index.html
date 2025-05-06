@@ -4,19 +4,283 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light">
-    <title>AGPCS</title>
     <link rel="stylesheet" href="style/Home.css">
+    <title>AGPCS</title>
+    <style>
+        :root {
+            --neon-blue: #00f3ff;
+            --dark-bg: #0a0a1a;
+            --cyber-gradient: linear-gradient(45deg, #00162e, #0a0a1a);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background: var(--cyber-gradient);
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* 动态网格背景 */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: 
+                linear-gradient(rgba(0, 243, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: -1;
+        }
+
+        /* 导航栏 */
+        .cyber-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            /* background: rgba(10, 10, 26, 0.95); */
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, var(--neon-blue), #7d12ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            background: rgba(0, 243, 255, 0.1);
+        }
+
+        /* 下拉菜单基础样式 */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(10, 10, 26, 0.95);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,243,255,0.2);
+            z-index: 1000;
+            border: 1px solid rgba(0,243,255,0.3);
+            border-radius: 4px;
+            padding: 10px 0;
+        }
+
+        /* 悬停显示菜单 */
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            animation: menuSlide 0.3s ease;
+        }
+
+        /* 下拉菜单项样式 */
+        .dropdown-menu li {
+            padding: 8px 20px;
+            transition: all 0.3s;
+        }
+
+        .dropdown-menu li:hover {
+            background: rgba(0,243,255,0.1);
+        }
+
+        .Flex-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .User-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+        }
+
+        .dropdown-menu li {
+            width: auto; /* 根据内容自动调整宽度 */
+            max-width: 150px; /* 设置最大宽度，避免超出显示范围 */
+            height: auto; /* 根据内容自动调整高度 */
+            padding: 10px;
+            border-bottom: 1px solid #ffffff; /* 每个list之间分隔 */
+            white-space: nowrap; /* 防止文字换行 */
+            overflow: hidden; /* 隐藏超出范围的文字 */
+            text-overflow: ellipsis; /* 超出范围显示省略号 */
+        }
+
+        .dropdown-menu li a {
+            text-align: center; /* 文本居中对齐 */
+            color: #ffffff;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* 下拉动画 */
+        @keyframes menuSlide {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 主内容区 */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .cyber-title {
+            font-size: 80px;
+            top: -240px;
+            margin-bottom: -250px;
+            text-shadow: 0 0 20px var(--neon-blue);
+            position: relative;
+            animation: neonPulse 2s infinite;
+        }
+
+        /* 作品展示区 */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cyber-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+        }
+
+        .cyber-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.2);
+        }
+
+        /* 动态效果 */
+        @keyframes neonPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .cyber-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header style="opacity: 0; animation: fadeIn 1s ease-out 0.2s forwards;">
-        <h1>AGPCS</h1>
-    </header>
-    <main>
-        <div style="position: absolute; top: 90px; right: 10px;">
-            <a href="test.html" class="login-button" style="animation: slideInFromLeft 1s ease-out 0.2s; animation-fill-mode: forwards; opacity: 0;">登录</a>
+    <nav class="cyber-nav">
+        <div class="nav-container">
+            <div class="nav-logo">AGPCS</div>
+            <div class="nav-links">
+                <a href="test.html" class="nav-link">登录</a>
+                
+                <!-- 下拉菜单容器 -->
+                <div class="dropdown">
+                    <div class="nav-link">更多 ▼</div>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="Pinkplasma.html" class="Flex-link">
+                                <img src="img/ZLY/pink.png" alt="zly-icon" class="User-icon">
+                                品客普拉斯马
+                            </a>
+                        </li>
+                        <li>
+                            <a href="WORLDRAPID.html" class="Flex-link">
+                                <img src="img/SYX/nazi.png" alt="syx-icon" class="User-icon">
+                                沃德挼劈德
+                            </a>
+                        </li>
+                        <li>
+                            <a href="E_5unday.html" class="Flex-link">
+                                <img src="img/XH/H.png" alt="xh-icon" class="User-icon">
+                                艺桑嘚
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+    
+                <a href="#about" class="nav-link" onclick="alert('怎么，暗恋我？')">关于</a>
+                <a href="#contact" class="nav-link" onclick="alert('你还想联系上我？想得美')">联系</a>
+            </div>
         </div>
-        <!-- 登录按钮 -->
-        <div class="vertical-buttons" style="display: flex; flex-direction: column; align-items: center;">
+    </nav>
+    
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="cyber-title">WORLD网页</h1>
+            <p class="cyber-subtitle">探索JTYS的边界😍</p>
+        </div>
+    </section>
+
+    <main>
+        <div class="vertical-buttons" style="position: relative; margin-top: -450px; flex-direction: column; align-items: center;">
             <a href="WORLDRAPID.html" class="button-SYX" style="animation: slideInFromLeft 1s ease-out 1s; animation-fill-mode: forwards; opacity: 0;">WORLDRAPID</a>
             <br>
             <!-- 用于WORLD的个人网站按钮 -->
@@ -67,8 +331,21 @@
         </script>
     </main>
 
-
-
+    <section id="portfolio" class="portfolio-grid">
+        <div class="cyber-card">
+            <h3>未来项目</h3>
+            <p>探索人工智能与交互设计的融合</p>
+        </div>
+        <div class="cyber-card">
+            <h3>数据可视化</h3>
+            <p>复杂数据的艺术化呈现</p>
+        </div>
+        <div class="cyber-card">
+            <h3>沉浸式体验</h3>
+            <p>虚拟与现实的边界探索</p>
+        </div>
+    </section>
+    
     <footer>
         <p>&copy; 2025 EGzero</p>
         <!-- 请了个高入来帮我打理代码，非常好 -->
